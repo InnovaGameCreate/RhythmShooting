@@ -8,7 +8,7 @@ public class notesmanager : MonoBehaviour
 {
     public GameObject prefab;                                   //生成するプレハブ
     public Transform[] spawnPoints;                             //0~14の座標を保持する配列
-    public Canvas canvas;                                       //プレハブを配置するCanvas
+    public Canvas Canvas;                                       //プレハブを配置するCanvas
     private List<SpawnData> spawnList = new List<SpawnData>();　
 
     // Start is called before the first frame update
