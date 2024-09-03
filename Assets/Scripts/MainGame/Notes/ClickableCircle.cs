@@ -1,77 +1,83 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class ClickableCircle : MonoBehaviour
 {
-    private float gracePeriod = 0.1f; // }0.1•b‚Ì—P—\
     private GameManager gameManager;
+    private Image imageComponent;
+    private bool isClickable = false;
+    private bool hasClicked = false;
+    private float creationTime;
 
     void Start()
     {
-        // GameManager ‚ÌQÆ‚ğæ“¾
-        GameObject scoreObject = GameObject.Find("GameManager");
-        if (scoreObject != null)
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+        if (gameManager != null)
         {
-            gameManager = scoreObject.GetComponent<GameManager>();
             Debug.Log("GameManager found and assigned.");
         }
         else
         {
             Debug.LogError("GameManager not found!");
         }
+
+        imageComponent = GetComponent<Image>();
+        if (imageComponent == null)
+        {
+            Debug.LogError("Image component not found on this GameObject!");
+        }
+
+        creationTime = Time.time;
+        StartCoroutine(CheckClickTiming());
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void Update()
     {
-        Debug.Log("OnTriggerEnter2D fired."); // ƒgƒŠƒK[‚ª”­‰Î‚µ‚½‚±‚Æ‚ğŠm”F
-        if (other.CompareTag("ImageNote"))
+        float elapsedTime = Time.time - creationTime;
+
+        // 3.0•b‚©‚ç3.1•b‚ÌŠÔ‚ÉÔ‚­Œõ‚ç‚¹‚é
+        if (elapsedTime >= 3.0f && elapsedTime <= 3.1f)
         {
-            Debug.Log("Trigger with ImageNote detected.");
-            StartCoroutine(HandleOverlap(other.gameObject));
+            imageComponent.color = Color.red;
+            isClickable = true;
         }
-        else
+        else if (elapsedTime > 3.1f)
         {
-            Debug.Log("Trigger with non-ImageNote detected: " + other.gameObject.name);
+            imageComponent.color = Color.white;
+            isClickable = false;
+        }
+
+        // 3.3•bŒã‚ÉƒIƒuƒWƒFƒNƒg‚ğ”jŠü‚·‚é
+        if (elapsedTime > 3.3f && !hasClicked)
+        {
+            gameManager.Miss();
+            Destroy(gameObject);
         }
     }
 
-    private IEnumerator HandleOverlap(GameObject imageNote)
+    IEnumerator CheckClickTiming()
     {
-        float startTime = Time.time;
-        float overlapStartTime = startTime + 0.1f; // —P—\ŠJnŠÔi}0.1•bj
-        float overlapEndTime = overlapStartTime + 0.1f; // —P—\I—¹ŠÔ
-        bool isSuccessful = false;
+        yield return new WaitForSeconds(3.0f);
 
-        while (Time.time < overlapEndTime)
+        while (Time.time - creationTime <= 3.1f)
         {
-            if (Time.time >= overlapStartTime && Time.time <= overlapEndTime)
+            yield return null;
+            if (isClickable && Input.GetMouseButtonDown(0))
             {
-                // —P—\ŠúŠÔ“à‚Å‚ ‚ê‚ÎƒNƒŠƒbƒN‚ğŒŸo
-                if (Input.GetMouseButtonDown(0))
+                if (!hasClicked)
                 {
-                    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Collider2D collider = GetComponent<Collider2D>();
-
-                    if (collider.OverlapPoint(mousePosition))
-                    {
-                        Debug.Log("Success detected.");
-                        gameManager.Hit(); // ¬Œ÷”‚ğ‘‚â‚·
-                        isSuccessful = true;
-                        break; // ¬Œ÷‚µ‚½‚Ì‚Åƒ‹[ƒv‚ğI—¹
-                    }
+                    hasClicked = true;
+                    gameManager.Hit();
+                    Destroy(gameObject);
                 }
             }
-            yield return null;
         }
 
-        if (!isSuccessful)
+        // ƒNƒŠƒbƒN‚³‚ê‚È‚©‚Á‚½ê‡AF‚ğŒ³‚É–ß‚·
+        if (!hasClicked)
         {
-            Debug.Log("Failure detected.");
-            gameManager.Miss(); // ¸”s”‚ğ‘‚â‚·
+            imageComponent.color = Color.white;
         }
-
-        // ”»’è‚ªI‚í‚Á‚½Œã‚É Image Note ‚ğíœ
-        Destroy(imageNote);
     }
-
 }
