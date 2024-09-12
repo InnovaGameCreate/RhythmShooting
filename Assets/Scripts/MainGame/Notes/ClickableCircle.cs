@@ -9,9 +9,17 @@ public class ClickableCircle : MonoBehaviour
     private bool isClickable = false;
     private bool hasClicked = false;
     private float creationTime;
+    [SerializeField]
+    private Vector3 targetScale = new Vector3(1.1f, 1.1f, 1.0f);
+    [SerializeField]
+    private Vector3 initialScale = new Vector3(0.1f, 0.1f, 1.0f);
+    [SerializeField]
+    private float duration = 3.3f;
+    private float startTime;
 
     void Start()
     {
+        // GameManagerの取得
         gameManager = GameObject.FindObjectOfType<GameManager>();
         if (gameManager != null)
         {
@@ -22,6 +30,7 @@ public class ClickableCircle : MonoBehaviour
             Debug.LogError("GameManager not found!");
         }
 
+        // Imageコンポーネントの取得
         imageComponent = GetComponent<Image>();
         if (imageComponent == null)
         {
@@ -29,6 +38,9 @@ public class ClickableCircle : MonoBehaviour
         }
 
         creationTime = Time.time;
+        startTime = Time.time; // スケール用の開始時間も設定
+        transform.localScale = initialScale; // スケールの初期化
+
         StartCoroutine(CheckClickTiming());
     }
 
@@ -36,15 +48,19 @@ public class ClickableCircle : MonoBehaviour
     {
         float elapsedTime = Time.time - creationTime;
 
-        // 3.0秒から3.1秒の間に赤く光らせる
+        // スケール操作: 3.3秒でサイズを変化させる
+        float t = Mathf.Clamp01(elapsedTime / duration);
+        transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+
+        // 3.0秒から3.1秒の間に緑に光らせる
         if (elapsedTime >= 3.0f && elapsedTime <= 3.1f)
         {
-            imageComponent.color = Color.red;
+            imageComponent.color = Color.green;
             isClickable = true;
         }
         else if (elapsedTime > 3.1f)
         {
-            imageComponent.color = Color.white;
+            imageComponent.color = Color.red;
             isClickable = false;
         }
 

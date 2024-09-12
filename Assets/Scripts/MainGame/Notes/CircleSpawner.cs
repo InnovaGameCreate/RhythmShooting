@@ -3,10 +3,10 @@ using System.Collections;
 
 public class CircleSpawner : MonoBehaviour
 {
-    public GameObject imageNotesPrefab; // Image Notes ‚Ì Prefab ‚ğİ’è
-    public Vector3[] spawnPositions; // 15‰ÓŠ‚Ì¶¬ˆÊ’u‚ÌÀ•W‚ğİ’è
+    public GameObject imageNotesPrefab; // Image Notes ã® Prefab ã‚’è¨­å®š
+    public Vector3[] spawnPositions; // 15ç®‡æ‰€ã®ç”Ÿæˆä½ç½®ã®åº§æ¨™ã‚’è¨­å®š
     private GameObject currentNote;
-    public float spawnDelay = 1f; // Ÿ‚Ìƒm[ƒg‚ğ¶¬‚·‚é‚Ü‚Å‚Ì’x‰„ŠÔ
+    public float spawnDelay = 1f; // æ¬¡ã®ãƒãƒ¼ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã¾ã§ã®é…å»¶æ™‚é–“
 
     void Start()
     {
@@ -15,22 +15,22 @@ public class CircleSpawner : MonoBehaviour
 
     void SpawnNote()
     {
-        // Šù‘¶‚Ìƒm[ƒg‚ğíœ
+        // æ—¢å­˜ã®ãƒãƒ¼ãƒˆã‚’å‰Šé™¤
         if (currentNote != null)
         {
             Destroy(currentNote);
         }
 
-        // ƒ‰ƒ“ƒ_ƒ€‚È¶¬ˆÊ’u‚ğ‘I‘ğ
+        // ãƒ©ãƒ³ãƒ€ãƒ ãªç”Ÿæˆä½ç½®ã‚’é¸æŠ
         if (spawnPositions != null && spawnPositions.Length == 15)
         {
             int randomIndex = Random.Range(0, spawnPositions.Length);
             Vector3 spawnPosition = spawnPositions[randomIndex];
 
-            // Image Notes ‚ğ¶¬‚µAŒ»İ‚Ìƒm[ƒg‚Æ‚µ‚Ä•Û‘¶
+            // Image Notes ã‚’ç”Ÿæˆã—ã€ç¾åœ¨ã®ãƒãƒ¼ãƒˆã¨ã—ã¦ä¿å­˜
             currentNote = Instantiate(imageNotesPrefab, spawnPosition, Quaternion.identity);
 
-            // Canvas‚ğæ“¾‚µ‚ÄAImage Notes‚ğCanvas‚ÌqƒIƒuƒWƒFƒNƒg‚Éİ’è
+            // Canvasã‚’å–å¾—ã—ã¦ã€Image Notesã‚’Canvasã®å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«è¨­å®š
             GameObject canvas = GameObject.Find("Canvas");
             if (canvas != null)
             {
@@ -46,16 +46,16 @@ public class CircleSpawner : MonoBehaviour
             Debug.LogError("Please ensure that 15 spawn positions are assigned in the inspector.");
         }
 
-        // 4•bŒã‚ÉŸ‚Ìƒm[ƒg‚ğ¶¬‚·‚é‚½‚ß‚ÉƒRƒ‹[ƒ`ƒ“‚ğŠJn
+        // 4ç§’å¾Œã«æ¬¡ã®ãƒãƒ¼ãƒˆã‚’ç”Ÿæˆã™ã‚‹ãŸã‚ã«ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’é–‹å§‹
         StartCoroutine(SpawnNextNote());
     }
 
     IEnumerator SpawnNextNote()
     {
-        // w’è‚³‚ê‚½’x‰„ŠÔ‚¾‚¯‘Ò‹@
+        // æŒ‡å®šã•ã‚ŒãŸé…å»¶æ™‚é–“ã ã‘å¾…æ©Ÿ
         yield return new WaitForSeconds(spawnDelay);
 
-        // Ä‚Ñƒm[ƒg‚ğ¶¬
+        // å†ã³ãƒãƒ¼ãƒˆã‚’ç”Ÿæˆ
         SpawnNote();
     }
 }
