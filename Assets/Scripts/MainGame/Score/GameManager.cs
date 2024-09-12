@@ -5,30 +5,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public int hit = 0;  // ¬Œ÷”
-    [SerializeField] public int miss = 0;  // ¸”s”
-    [SerializeField] private Animator animator; // ƒAƒjƒ[ƒVƒ‡ƒ“
-    [SerializeField] private GameObject notesSE; // ƒm[ƒcƒTƒEƒ“ƒhƒGƒtƒFƒNƒg
-    [SerializeField] private GameObject plantPos; // PlantPosƒIƒuƒWƒFƒNƒgi”»’è‘ÎÛj
+    [SerializeField] public int hit = 0;  // æˆåŠŸæ•°
+    [SerializeField] public int miss = 0;  // å¤±æ•—æ•°
+    [SerializeField] private Animator animator; // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+    [SerializeField] private GameObject notesSE; // ãƒãƒ¼ãƒ„ã‚µã‚¦ãƒ³ãƒ‰ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
+    [SerializeField] private GameObject plantPos; // PlantPosã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼ˆåˆ¤å®šå¯¾è±¡ï¼‰
     
-    public void Hit() // ¬Œ÷”‚ğ1‘‚â‚·ƒƒ\ƒbƒh
+    public void Hit() // æˆåŠŸæ•°ã‚’1å¢—ã‚„ã™ãƒ¡ã‚½ãƒƒãƒ‰
     {
         hit += 1;
-        animator.SetTrigger("Jump");  // ƒAƒjƒ[ƒVƒ‡ƒ“‚ğƒgƒŠƒK[
-        Instantiate(notesSE);  // ƒTƒEƒ“ƒhƒGƒtƒFƒNƒg‚ğÄ¶
+        animator.SetTrigger("Jump");  // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ãƒˆãƒªã‚¬ãƒ¼
+        Instantiate(notesSE);  // ã‚µã‚¦ãƒ³ãƒ‰ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å†ç”Ÿ
 
-        // PlantPos‚ÌƒRƒ‰ƒCƒ_[‚ÉG‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ªPlant‚Å‚ ‚é‚©ƒ`ƒFƒbƒN
-        Collider[] hitColliders = Physics.OverlapSphere(plantPos.transform.position, 0.5f); // PlantPosü•Ó‚ÌƒRƒ‰ƒCƒ_[‚ğæ“¾
+        // PlantPosã®ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ã«è§¦ã‚Œã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒPlantã§ã‚ã‚‹ã‹ãƒã‚§ãƒƒã‚¯
+        Collider[] hitColliders = Physics.OverlapSphere(plantPos.transform.position, 2f); // PlantPoså‘¨è¾ºã®ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ã‚’å–å¾—
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Plant")) // ƒ^ƒO‚ªPlant‚ÌƒIƒuƒWƒFƒNƒg‚ğŒ©‚Â‚¯‚é
+            if (hitCollider.CompareTag("Plant")) // ã‚¿ã‚°ãŒPlantã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¦‹ã¤ã‘ã‚‹
             {
-                Transform sprout = hitCollider.transform.Find("Sprout"); // qƒIƒuƒWƒFƒNƒg‚ÌSprout‚ğ’T‚·
-                Transform flower = hitCollider.transform.Find("Flower"); // qƒIƒuƒWƒFƒNƒg‚ÌFlower‚ğ’T‚·
+                Transform sprout = hitCollider.transform.Find("Sprout"); // å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Sproutã‚’æ¢ã™
+                Transform flower = hitCollider.transform.Find("Flower"); // å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Flowerã‚’æ¢ã™
 
                 if (sprout != null && flower != null)
                 {
-                    // Sprout‚ğ”ñƒAƒNƒeƒBƒuAFlower‚ğƒAƒNƒeƒBƒu‚É‚·‚é
+                    // Sproutã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã€Flowerã‚’ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ã™ã‚‹
                     sprout.gameObject.SetActive(false);
                     flower.gameObject.SetActive(true);
                 }
@@ -36,17 +36,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Miss() // ¸”s”‚ğ1‘‚â‚·ƒƒ\ƒbƒh
+    public void Miss() // å¤±æ•—æ•°ã‚’1å¢—ã‚„ã™ãƒ¡ã‚½ãƒƒãƒ‰
     {
         miss += 1;
     }
 
-    public int GetHit() // ¬Œ÷”‚ğ•Ô‚·ƒƒ\ƒbƒh
+    public int GetHit() // æˆåŠŸæ•°ã‚’è¿”ã™ãƒ¡ã‚½ãƒƒãƒ‰
     {
         return hit;
     }
 
-    public int GetMiss() // ¸”s”‚ğ•Ô‚·ƒƒ\ƒbƒh
+    public int GetMiss() // å¤±æ•—æ•°ã‚’è¿”ã™ãƒ¡ã‚½ãƒƒãƒ‰
     {
         return miss;
     }

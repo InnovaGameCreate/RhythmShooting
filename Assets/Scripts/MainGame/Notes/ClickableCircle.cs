@@ -22,49 +22,49 @@ public class ClickableCircle : MonoBehaviour
 
     void Start()
     {
-        // GameManager‚Ìæ“¾
+        // GameManagerã®å–å¾—
         gameManager = GameObject.FindObjectOfType<GameManager>();
-        if (gameManager != null)
-        {
-            Debug.Log("GameManager found and assigned.");
-        }
-        else
-        {
-            Debug.LogError("GameManager not found!");
-        }
+        //if (gameManager != null)
+        //{
+        //    Debug.Log("GameManager found and assigned.");
+        //}
+        //else
+        //{
+        //    Debug.LogError("GameManager not found!");
+        //}
 
-        // ImageƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìæ“¾
+        // Imageã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å–å¾—
         imageComponent = GetComponent<Image>();
-        if (imageComponent == null)
-        {
-            Debug.LogError("Image component not found on this GameObject!");
-        }
+        //if (imageComponent == null)
+        //{
+        //    Debug.LogError("Image component not found on this GameObject!");
+        //}
 
         creationTime = Time.time;
-        transform.localScale = initialScale; // ƒXƒP[ƒ‹‚Ì‰Šú‰»
+        transform.localScale = initialScale; // ã‚¹ã‚±ãƒ¼ãƒ«ã®åˆæœŸåŒ–
     }
 
     void FixedUpdate()
     {
         float elapsedTime = Time.time - creationTime;
 
-        // ƒXƒP[ƒ‹‘€ì: duration•b‚ÅƒTƒCƒY‚ğ•Ï‰»‚³‚¹‚é
+        // ã‚¹ã‚±ãƒ¼ãƒ«æ“ä½œ: durationç§’ã§ã‚µã‚¤ã‚ºã‚’å¤‰åŒ–ã•ã›ã‚‹
         float t = Mathf.Clamp01(elapsedTime / duration);
         transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
 
-        // —ÎF‚ÉŒõ‚ç‚¹AƒNƒŠƒbƒN‰Â”\‚É‚·‚éŠÔ‘Ñ
-        if (elapsedTime >= 1.8f && elapsedTime <= 2.4f)
+        // ç·‘è‰²ã«å…‰ã‚‰ã›ã€ã‚¯ãƒªãƒƒã‚¯å¯èƒ½ã«ã™ã‚‹æ™‚é–“å¸¯
+        if (elapsedTime >= 1.5f && elapsedTime < 2.0f)
         {
             imageComponent.color = Color.green;
             isClickable = true;
         }
-        else if (elapsedTime > 2.5f)
+        else if (elapsedTime >= 2.0f)
         {
             imageComponent.color = Color.red;
             isClickable = false;
         }
 
-        // 3.0•bŒã‚ÉƒNƒŠƒbƒN‚³‚ê‚Ä‚¢‚È‚¢ê‡AMiss‚Æ‚Æ‚à‚ÉƒIƒuƒWƒFƒNƒg‚ğ”jŠü
+        // 3.0ç§’å¾Œã«ã‚¯ãƒªãƒƒã‚¯ã•ã‚Œã¦ã„ãªã„å ´åˆã€Missã¨ã¨ã‚‚ã«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç ´æ£„
         if (elapsedTime > 3.0f && !hasClicked)
         {
             hasClicked = true;
@@ -73,10 +73,10 @@ public class ClickableCircle : MonoBehaviour
         }
     }
 
-    // ƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«‚Ìˆ—
+    // ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã¨ãã®å‡¦ç†
     void OnMouseDown()
     {
-        // ƒNƒŠƒbƒN‰Â”\‚ÅA‚Ü‚¾ƒNƒŠƒbƒN‚³‚ê‚Ä‚¢‚È‚¢ê‡
+        // ã‚¯ãƒªãƒƒã‚¯å¯èƒ½ã§ã€ã¾ã ã‚¯ãƒªãƒƒã‚¯ã•ã‚Œã¦ã„ãªã„å ´åˆ
         if (isClickable && !hasClicked)
         {
             hasClicked = true;

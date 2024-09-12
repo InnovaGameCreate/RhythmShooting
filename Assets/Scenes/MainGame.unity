@@ -1418,7 +1418,7 @@ MonoBehaviour:
   miss: 0
   animator: {fileID: 920563567}
   notesSE: {fileID: 5360797601726555714, guid: 2ca4b64877a063c498f43c542c710d04, type: 3}
-  plantPos: {fileID: 1855715542}
+  plantPos: {fileID: 900134877}
 --- !u!114 &440427472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,6 +1452,7 @@ MonoBehaviour:
   flowerPrefab: {fileID: 5623787902822603822, guid: 438c7e5a3701aab4d81c7b55729bd173, type: 3}
   flowerSpawnPosition: {fileID: 987154573}
   targetPosition: {fileID: 1855715543}
+  notesInterval: 1
 --- !u!82 &440427473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2097,6 +2098,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d9cc67243350f643b8c562ed0503c49, type: 3}
+--- !u!1 &900134877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900134878}
+  m_Layer: 0
+  m_Name: PlantOpenPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &900134878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900134877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 294.2, y: 39.5, z: -33.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920563565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,7 +2320,7 @@ Transform:
   m_GameObject: {fileID: 987154572}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 596.9, y: 39.5, z: -33.2}
+  m_LocalPosition: {x: 583.5, y: 39.5, z: -33.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3324,7 +3356,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1855715543}
-  - component: {fileID: 1855715544}
   m_Layer: 0
   m_Name: PlantTargetPos
   m_TagString: Untagged
@@ -3341,33 +3372,12 @@ Transform:
   m_GameObject: {fileID: 1855715542}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 284.4, y: 39.5, z: -33.2}
+  m_LocalPosition: {x: 265.4, y: 39.5, z: -33.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1855715544
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855715542}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 27.521149, y: 49.166252, z: 30.693098}
-  m_Center: {x: 13.260574, y: 24.083126, z: 3.8973494}
 --- !u!1001 &1865928545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4251,3 +4261,4 @@ SceneRoots:
   - {fileID: 224895780}
   - {fileID: 987154573}
   - {fileID: 1855715543}
+  - {fileID: 900134878}
