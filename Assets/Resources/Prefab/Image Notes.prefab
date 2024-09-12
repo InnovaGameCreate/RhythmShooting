@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7368717889109691857}
+  - component: {fileID: 8431682932142321403}
   - component: {fileID: 3382101671941457419}
   - component: {fileID: 6912875730173748336}
   - component: {fileID: -4908585803228781632}
   - component: {fileID: 1161291073879971643}
-  - component: {fileID: 8431682932142321403}
   m_Layer: 5
   m_Name: Image Notes
   m_TagString: ImageNote
@@ -31,15 +31,32 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.668762, y: -14.493042}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8431682932142321403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073222340249678999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e8299b2e2ef314eaf7542898ca09ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScale: {x: 1.5, y: 1.5, z: 1}
+  initialScale: {x: 0, y: 0, z: 1}
+  duration: 2.3
+  successDelay: 1
+  missDelay: 0.5
 --- !u!222 &3382101671941457419
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -110,9 +127,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.19012451, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 44.837585
 --- !u!50 &1161291073879971643
 Rigidbody2D:
   serializedVersion: 4
@@ -140,15 +157,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8431682932142321403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073222340249678999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18e8299b2e2ef314eaf7542898ca09ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

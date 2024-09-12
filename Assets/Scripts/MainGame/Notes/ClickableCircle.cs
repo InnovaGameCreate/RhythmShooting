@@ -12,10 +12,13 @@ public class ClickableCircle : MonoBehaviour
     [SerializeField]
     private Vector3 targetScale = new Vector3(1.1f, 1.1f, 1.0f);
     [SerializeField]
-    private Vector3 initialScale = new Vector3(0.1f, 0.1f, 1.0f);
+    private Vector3 initialScale = new Vector3(0.0f, 0.0f, 1.0f);
     [SerializeField]
-    private float duration = 3.3f;
-    private float startTime;
+    private float duration = 3.0f;
+    [SerializeField]
+    private float successDelay = 0.5f;
+    [SerializeField]
+    private float missDelay = 0.5f;
 
     void Start()
     {
@@ -38,62 +41,53 @@ public class ClickableCircle : MonoBehaviour
         }
 
         creationTime = Time.time;
-        startTime = Time.time; // スケール用の開始時間も設定
         transform.localScale = initialScale; // スケールの初期化
-
-        StartCoroutine(CheckClickTiming());
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float elapsedTime = Time.time - creationTime;
 
-        // スケール操作: 3.3秒でサイズを変化させる
+        // スケール操作: duration秒でサイズを変化させる
         float t = Mathf.Clamp01(elapsedTime / duration);
         transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
 
-        // 3.0秒から3.1秒の間に緑に光らせる
-        if (elapsedTime >= 3.0f && elapsedTime <= 3.1f)
+        // 緑色に光らせ、クリック可能にする時間帯
+        if (elapsedTime >= 1.8f && elapsedTime <= 2.4f)
         {
             imageComponent.color = Color.green;
             isClickable = true;
         }
-        else if (elapsedTime > 3.1f)
+        else if (elapsedTime > 2.5f)
         {
             imageComponent.color = Color.red;
             isClickable = false;
         }
 
-        // 3.3秒後にオブジェクトを破棄する
-        if (elapsedTime > 3.3f && !hasClicked)
+        // 3.0秒後にクリックされていない場合、Missとともにオブジェクトを破棄
+        if (elapsedTime > 3.0f && !hasClicked)
         {
+            hasClicked = true;
             gameManager.Miss();
-            Destroy(gameObject);
+            StartCoroutine(DelayedDestroyObject(missDelay));
         }
     }
 
-    IEnumerator CheckClickTiming()
+    // クリックされたときの処理
+    void OnMouseDown()
     {
-        yield return new WaitForSeconds(3.0f);
-
-        while (Time.time - creationTime <= 3.1f)
+        // クリック可能で、まだクリックされていない場合
+        if (isClickable && !hasClicked)
         {
-            yield return null;
-            if (isClickable && Input.GetMouseButtonDown(0))
-            {
-                if (!hasClicked)
-                {
-                    hasClicked = true;
-                    gameManager.Hit();
-                    Destroy(gameObject);
-                }
-            }
+            hasClicked = true;
+            gameManager.Hit();
+            StartCoroutine(DelayedDestroyObject(successDelay));
         }
+    }
 
-        // クリックされなかった場合、色を元に戻す
-        if (!hasClicked)
-        {
-            imageComponent.color = Color.white;
-        }
+    IEnumerator DelayedDestroyObject(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 }
