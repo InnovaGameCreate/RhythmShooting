@@ -224,16 +224,16 @@ RectTransform:
   - {fileID: 59026513}
   - {fileID: 199754797}
   - {fileID: 1900297930}
-  - {fileID: 539327690}
-  - {fileID: 2039360845}
-  - {fileID: 1174903344}
-  - {fileID: 1846015715}
   - {fileID: 1309867017}
-  - {fileID: 1107286315}
-  - {fileID: 459700693}
-  - {fileID: 176510479}
-  - {fileID: 1234755411}
+  - {fileID: 1846015715}
+  - {fileID: 1174903344}
+  - {fileID: 2039360845}
+  - {fileID: 539327690}
   - {fileID: 1564532835}
+  - {fileID: 1234755411}
+  - {fileID: 176510479}
+  - {fileID: 459700693}
+  - {fileID: 1107286315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1438,21 +1438,20 @@ MonoBehaviour:
   - {fileID: 59026513}
   - {fileID: 199754797}
   - {fileID: 1900297930}
-  - {fileID: 539327690}
-  - {fileID: 2039360845}
-  - {fileID: 1174903344}
-  - {fileID: 1846015715}
   - {fileID: 1309867017}
-  - {fileID: 1107286315}
-  - {fileID: 459700693}
-  - {fileID: 176510479}
-  - {fileID: 1234755411}
+  - {fileID: 1846015715}
+  - {fileID: 1174903344}
+  - {fileID: 2039360845}
+  - {fileID: 539327690}
   - {fileID: 1564532835}
+  - {fileID: 1234755411}
+  - {fileID: 176510479}
+  - {fileID: 459700693}
+  - {fileID: 1107286315}
   canvas: {fileID: 4969463}
   flowerPrefab: {fileID: 5623787902822603822, guid: 438c7e5a3701aab4d81c7b55729bd173, type: 3}
   flowerSpawnPosition: {fileID: 987154573}
   targetPosition: {fileID: 1855715543}
-  notesInterval: 1
 --- !u!82 &440427473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1561,7 +1560,7 @@ GameObject:
   - component: {fileID: 459700695}
   - component: {fileID: 459700694}
   m_Layer: 5
-  m_Name: Notes12
+  m_Name: Notes14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1636,7 +1635,7 @@ GameObject:
   - component: {fileID: 539327692}
   - component: {fileID: 539327691}
   m_Layer: 5
-  m_Name: Notes06
+  m_Name: Notes10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2338,7 +2337,7 @@ GameObject:
   - component: {fileID: 1107286317}
   - component: {fileID: 1107286316}
   m_Layer: 5
-  m_Name: Notes11
+  m_Name: Notes15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2503,7 +2502,7 @@ GameObject:
   - component: {fileID: 1234755413}
   - component: {fileID: 1234755412}
   m_Layer: 5
-  m_Name: Notes14
+  m_Name: Notes12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2578,7 +2577,7 @@ GameObject:
   - component: {fileID: 1309867019}
   - component: {fileID: 1309867018}
   m_Layer: 5
-  m_Name: Notes10
+  m_Name: Notes06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2963,7 +2962,7 @@ GameObject:
   - component: {fileID: 1564532837}
   - component: {fileID: 1564532836}
   m_Layer: 5
-  m_Name: Notes15
+  m_Name: Notes11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3190,7 +3189,7 @@ GameObject:
   - component: {fileID: 1846015717}
   - component: {fileID: 1846015716}
   m_Layer: 5
-  m_Name: Notes09
+  m_Name: Notes07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3895,7 +3894,7 @@ GameObject:
   - component: {fileID: 2039360847}
   - component: {fileID: 2039360846}
   m_Layer: 5
-  m_Name: Notes07
+  m_Name: Notes09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

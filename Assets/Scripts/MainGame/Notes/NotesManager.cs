@@ -13,9 +13,7 @@ public class NotesManager : MonoBehaviour
     private List<SpawnData> spawnList = new List<SpawnData>();
     private float sceneStartTime;
 
-    // ノーツの生成間隔を設定
-    public float notesInterval = 1f; // ここでノーツの生成間隔を調整（例: 1秒間隔や0.5秒間隔）
-
+    
     // Start is called before the first frame update
     void Start()
     {

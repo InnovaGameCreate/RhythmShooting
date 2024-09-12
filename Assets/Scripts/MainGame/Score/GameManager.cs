@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator animator; // アニメーション
     [SerializeField] private GameObject notesSE; // ノーツサウンドエフェクト
     [SerializeField] private GameObject plantPos; // PlantPosオブジェクト（判定対象）
-    
+    void Start()
+	{
+		hit = 0;
+		miss = 0;
+	}
     public void Hit() // 成功数を1増やすメソッド
     {
         hit += 1;
@@ -18,7 +22,7 @@ public class GameManager : MonoBehaviour
         Instantiate(notesSE);  // サウンドエフェクトを再生
 
         // PlantPosのコライダーに触れているオブジェクトがPlantであるかチェック
-        Collider[] hitColliders = Physics.OverlapSphere(plantPos.transform.position, 2f); // PlantPos周辺のコライダーを取得
+        Collider[] hitColliders = Physics.OverlapSphere(plantPos.transform.position, 3f); // PlantPos周辺のコライダーを取得
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Plant")) // タグがPlantのオブジェクトを見つける
