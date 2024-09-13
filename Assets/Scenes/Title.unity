@@ -374,9 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 21300000, guid: 1a3b2a733ba92f44f8d7edfb3adb2958, type: 3}
-  - {fileID: 21300000, guid: 32fbd53e883bd0c40a572fb8ff53fd87, type: 3}
-  - {fileID: 21300000, guid: 930b6f07ac0fcf84484651c11414f0d4, type: 3}
+  - {fileID: 21300000, guid: c08199284a2fa3449ac3f9689447aef3, type: 3}
+  - {fileID: 21300000, guid: bccd555c23c56644abdc5035c6ea2905, type: 3}
+  - {fileID: 21300000, guid: 1e5e7e02220452f46baee519c3df7c48, type: 3}
   image: {fileID: 254935816}
 --- !u!1 &500298677
 GameObject:
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1600, y: 900}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -982,7 +982,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dc04fc513fc4ba24b9b2b54266dcea27, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1342,8 +1342,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 619, y: -352}
-  m_SizeDelta: {x: 256, y: 128}
+  m_AnchoredPosition: {x: 589, y: 344}
+  m_SizeDelta: {x: 271.6589, y: 135.8295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1393810980
 MonoBehaviour:

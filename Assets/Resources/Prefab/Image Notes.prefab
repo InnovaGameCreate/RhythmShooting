@@ -51,11 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e8299b2e2ef314eaf7542898ca09ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScale: {x: 2, y: 2, z: 1}
+  clicableSprite: {fileID: 21300000, guid: 54c6fa4d4139e0f488b02fa31fa3e09b, type: 3}
+  targetScale: {x: 1.8, y: 1.8, z: 1}
   initialScale: {x: 0, y: 0, z: 1}
-  duration: 3
-  successDelay: 1
-  missDelay: 0.5
+  duration: 2
+  successDelay: 0.3
+  missDelay: 0.3
 --- !u!222 &3382101671941457419
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ed242987c11ec648aa914f097cda5d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 029684e9b399f7741ac559f0fe4f5322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
